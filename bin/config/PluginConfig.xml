@@ -1,0 +1,41 @@
+﻿<?xml encoding="utf-8" version="1.0"?>
+
+<config>
+
+    <defaultPluginPath>./plugins</defaultPath>
+    <defaultDebugPostfix>d</defaultDebugPostfix>
+    <defaultPluginPostfix>dll</defaultPostfix>
+
+    <plugins>
+        <!--
+        Format:
+        <plugin>
+            <path>./foo</path>                  // optional   default:.
+            <postfix>bar</postfix>              // optional   default:dll(windows)/so(linux)
+            <debugPostfix>d</debugPostfix>      // optional   default:d
+            <name>Myplugin</name>               // necessary
+
+            // If it is a layer plugin, two more tags:
+            <displayMode>2D</displayMode>       // necessary  options:2D/3D/Both
+            <addToViews>
+                <type>Default main view</type>  // optional   options:Default main view/Default PIP view/(other custom type)  default:Default main view
+                <type>Default PIP view</type>
+            </addToViews>
+        </plugin>
+        -->
+
+
+        <plugin>
+            <name>BaseEnv</name>
+            <displayMode>Both</displayMode>
+            <addToViews> </addToViews>
+        </plugin>
+        <plugin>
+            <name>Missiles</name>
+            <displayMode>Both</displayMode>
+            <addToViews> </addToViews>
+        </plugin>
+
+    </plugins>
+
+</config>

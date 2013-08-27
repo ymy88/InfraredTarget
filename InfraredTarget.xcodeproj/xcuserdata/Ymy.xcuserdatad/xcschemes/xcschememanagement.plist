@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>BaseEnv.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>GlobalConfig.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+		<key>InfraredSimulator.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>5</integer>
+		</dict>
+		<key>Missiles.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>3</integer>
+		</dict>
+		<key>Recorder.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>4</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>F91479A017B4E2930079BD89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9147A4317B4E4F30079BD89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9147A4B17B4E5000079BD89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9147A5317B4E50C0079BD89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9147A5B17B4E51C0079BD89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F9147A6317B4E53F0079BD89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

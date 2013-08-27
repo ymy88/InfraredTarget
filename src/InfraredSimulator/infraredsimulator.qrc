@@ -1,0 +1,11 @@
+<RCC>
+  <qresource prefix="InfraredSimulator">
+    <file>resource/listIcon.png</file>
+    <file>resource/peace2.png</file>
+    <file>resource/peace.png</file>
+    <file>resource/do.png</file>
+    <file>resource/stop.png</file>
+    <file>resource/back.png</file>
+    <file>resource/speed.png</file>
+  </qresource>
+</RCC>

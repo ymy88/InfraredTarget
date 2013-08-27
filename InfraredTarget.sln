@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual Studio 2008
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "InfraredSimulator", "src\InfraredSimulator\InfraredSimulator.vcproj", "{3677F7DA-E304-4079-888C-A8518E022D3F}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DE5ACD40-34D4-452B-ABD5-E83FEA921114} = {DE5ACD40-34D4-452B-ABD5-E83FEA921114}
+		{83C1595D-FF86-486D-B1DA-6ECAA8BAF381} = {83C1595D-FF86-486D-B1DA-6ECAA8BAF381}
+		{D922D993-5235-4547-96E9-5BBE2F046DF4} = {D922D993-5235-4547-96E9-5BBE2F046DF4}
+		{D140DBAE-973D-4520-9D85-CC43551D9ED5} = {D140DBAE-973D-4520-9D85-CC43551D9ED5}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GlobalConfig", "src\GlobalConfig\GlobalConfig.vcproj", "{DE5ACD40-34D4-452B-ABD5-E83FEA921114}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Recorder", "src\Recorder\Recorder.vcproj", "{D922D993-5235-4547-96E9-5BBE2F046DF4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DE5ACD40-34D4-452B-ABD5-E83FEA921114} = {DE5ACD40-34D4-452B-ABD5-E83FEA921114}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Missiles", "src\Missiles\Missiles.vcproj", "{83C1595D-FF86-486D-B1DA-6ECAA8BAF381}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DE5ACD40-34D4-452B-ABD5-E83FEA921114} = {DE5ACD40-34D4-452B-ABD5-E83FEA921114}
+		{D922D993-5235-4547-96E9-5BBE2F046DF4} = {D922D993-5235-4547-96E9-5BBE2F046DF4}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BaseEnv", "src\BaseEnv\BaseEnv.vcproj", "{D140DBAE-973D-4520-9D85-CC43551D9ED5}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DE5ACD40-34D4-452B-ABD5-E83FEA921114} = {DE5ACD40-34D4-452B-ABD5-E83FEA921114}
+		{D922D993-5235-4547-96E9-5BBE2F046DF4} = {D922D993-5235-4547-96E9-5BBE2F046DF4}
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3677F7DA-E304-4079-888C-A8518E022D3F}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3677F7DA-E304-4079-888C-A8518E022D3F}.Debug|Win32.Build.0 = Debug|Win32
+		{3677F7DA-E304-4079-888C-A8518E022D3F}.Release|Win32.ActiveCfg = Release|Win32
+		{3677F7DA-E304-4079-888C-A8518E022D3F}.Release|Win32.Build.0 = Release|Win32
+		{DE5ACD40-34D4-452B-ABD5-E83FEA921114}.Debug|Win32.ActiveCfg = Debug|Win32
+		{DE5ACD40-34D4-452B-ABD5-E83FEA921114}.Debug|Win32.Build.0 = Debug|Win32
+		{DE5ACD40-34D4-452B-ABD5-E83FEA921114}.Release|Win32.ActiveCfg = Release|Win32
+		{DE5ACD40-34D4-452B-ABD5-E83FEA921114}.Release|Win32.Build.0 = Release|Win32
+		{D922D993-5235-4547-96E9-5BBE2F046DF4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D922D993-5235-4547-96E9-5BBE2F046DF4}.Debug|Win32.Build.0 = Debug|Win32
+		{D922D993-5235-4547-96E9-5BBE2F046DF4}.Release|Win32.ActiveCfg = Release|Win32
+		{D922D993-5235-4547-96E9-5BBE2F046DF4}.Release|Win32.Build.0 = Release|Win32
+		{83C1595D-FF86-486D-B1DA-6ECAA8BAF381}.Debug|Win32.ActiveCfg = Debug|Win32
+		{83C1595D-FF86-486D-B1DA-6ECAA8BAF381}.Debug|Win32.Build.0 = Debug|Win32
+		{83C1595D-FF86-486D-B1DA-6ECAA8BAF381}.Release|Win32.ActiveCfg = Release|Win32
+		{83C1595D-FF86-486D-B1DA-6ECAA8BAF381}.Release|Win32.Build.0 = Release|Win32
+		{D140DBAE-973D-4520-9D85-CC43551D9ED5}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D140DBAE-973D-4520-9D85-CC43551D9ED5}.Debug|Win32.Build.0 = Debug|Win32
+		{D140DBAE-973D-4520-9D85-CC43551D9ED5}.Release|Win32.ActiveCfg = Release|Win32
+		{D140DBAE-973D-4520-9D85-CC43551D9ED5}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
