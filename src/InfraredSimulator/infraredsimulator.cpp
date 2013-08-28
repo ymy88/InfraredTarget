@@ -14,6 +14,7 @@ InfraredSimulator::InfraredSimulator(QWidget *parent, Qt::WFlags flags)
     bGo  =false;
 	bBack=false;
 	para = new parameters;
+	para->setGeometry(100, 100, para->width(), para->height());
 
 	connect(ui.parameter       ,SIGNAL(clicked()),this,SLOT(showParameter()));
 	connect(ui.back            ,SIGNAL(clicked()),this,SLOT(back()         ));

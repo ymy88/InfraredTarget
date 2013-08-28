@@ -80,6 +80,7 @@ GeneratedFiles/
 *.so
 *.gch
 *.pch
+*.exe
 
 ## TODO: If you have NuGet Package Restore enabled, uncomment this
 #packages/
@@ -177,10 +178,12 @@ pip-log.txt
 
 # Mac crap
 .DS_Store
+._*
 
 # Other
 *.rar
 *.zip
+*.txt
 
 *.batch_build
 *.session
@@ -196,5 +199,7 @@ pip-log.txt
 #This project
 /bin/InfraredSimulatord
 /bin/InfraredSimulator
+/bin/resources/Missiles/Image
+/bin/resources/Missiles/data.txt
 !/bin/pthreadVC2.dll
 !/lib/pthreadVC2.lib

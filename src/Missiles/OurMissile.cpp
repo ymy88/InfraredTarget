@@ -68,8 +68,10 @@ void OurMissile::getReady( const Situation& situation, unsigned int& begFrame, u
 	initCameraForTrackCalc(&camera, situation.our.loc->lon, situation.our.loc->lat, situation.our.alt, situation.our.thetaEarth, situation.our.thetaNorth);
 
 	_track.clear();
+	_posture.clear();
 	_disturb.clear();
 	_track.push_back(camera.getCameraController().getCoordMatrix(COORD_TYPE_EYE_POINT));
+	_posture.push_back(Matrixd());
 
 	//
 	// 轨迹生成
@@ -106,6 +108,19 @@ void OurMissile::getReady( const Situation& situation, unsigned int& begFrame, u
 	begFrame += _delayFrame;
 
 	endFrame = _maxFrame;
+
+
+// 	static char ch = 'a';
+// 	ch++;
+// 	string file("a.txt");
+// 	file[0] = ch;
+// 	ofstream fout(file.c_str());
+// 
+// 	for (unsigned int i = 0; i < _track.size(); ++i)
+// 	{
+// 		Vec3d trans = _track[i].getTrans();
+// 		fout << trans.x() << '\t' << trans.y() << '\t' << trans.z() << endl;
+// 	}
 }
 
 void OurMissile::gotoFrame( unsigned int frame )
@@ -262,6 +277,7 @@ unsigned OurMissile::flyByTrack(const Situation& situation, CameraBase* camera, 
 
 		/* 记录导弹的矩阵 */
 		_track.push_back(matOur);
+		_posture.push_back(Matrixd());
 		
 		rT = rT1;
 		vT = vT1;
@@ -273,17 +289,14 @@ unsigned OurMissile::flyByTrack(const Situation& situation, CameraBase* camera, 
 			isAtHeap = false;
 		}
 
-
-		const Matrixd& matEnemy = _enemyMissile->getMissileMatrixInFrame(frame);
-		Vec3d enemyPos(0, 0, 0);
-		enemyPos = enemyPos * matEnemy;
-
-		Vec3d ourPos(0, 0, 0);
-		ourPos = ourPos * matOur;
-
 		frame++;
 
-		if ((enemyPos - ourPos).length2() <= DISTANCE_TO_START_AIM * DISTANCE_TO_START_AIM)
+		const Matrixd& matEnemy = _enemyMissile->getMissileMatrixInFrame(frame);
+		Vec3d enemyPos = matEnemy.getTrans();
+		Vec3d ourPos = matOur.getTrans();
+
+		double dist2 = (enemyPos - ourPos).length2();
+		if (dist2 <= DISTANCE_TO_START_AIM * DISTANCE_TO_START_AIM)
 		{
 			break;
 		}
@@ -303,6 +316,8 @@ unsigned OurMissile::aimAtTarget(const Situation& situation, CameraBase* camera,
 	unsigned firstFrame = frame;
 	do 
 	{
+		Matrixd postureMat;
+
 		if (frame + _delayFrame > _enemyMissile->getHitTargetFrame()) { break; }
 
 		if (frame == MAX_END_FRAME) { break; }
@@ -317,22 +332,33 @@ unsigned OurMissile::aimAtTarget(const Situation& situation, CameraBase* camera,
 		Vec3d sight = Vec3d(0, 0, -1);
 
 		double cosAngle = enemyPosEye * sight;
+		bool targeted;
 		if (abs(cosAngle) < 1)
 		{
 			double angle = acos(cosAngle);
-			angle = angle < maxAngle ? angle : maxAngle;
+			if (angle <= maxAngle)
+			{
+				targeted = true;
+			}
+			else
+			{
+				targeted = false;
+				angle = maxAngle;
+			}
 			Vec3d axis = sight ^ enemyPosEye;
 			
 			camera->getCameraController().rotateCamera(axis, angle, COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);
+			postureMat.makeRotate(angle, axis);
 		}
 
 		/* 判断是否会击中 */
 		enemyPosEye = camera->getCameraController().switchCoordinateSystem_point(enemyPos, COORD_TYPE_WORLD, COORD_TYPE_EYE_POINT);
-		if (fabs(enemyPosEye.z()) <= dist)
+		if (/* targeted && */fabs(enemyPosEye.z()) <= dist)
 		{
 			Vec3d v = enemyPos - camera->getCameraController().getCurrEye();
 			camera->getCameraController().translateCamera(v, COORD_TYPE_WORLD, EYE_POINT_AND_AT_POINT);	
 			_track.push_back(camera->getCameraController().getCoordMatrix(COORD_TYPE_EYE_POINT));
+			_posture.push_back(Matrixd());
 			_disturb.push_back(Vec2(0, 0));
 			_enemyMissile->setBeenHitFrame(_delayFrame + frame);
 
@@ -362,6 +388,14 @@ unsigned OurMissile::aimAtTarget(const Situation& situation, CameraBase* camera,
 		double disturbZAngle = 0.1 * sin(0.03 * frame) * rnd;
 		camera->getCameraController().rotateCamera(AXIS_Z, disturbZAngle, COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);
 
+		Matrixd matR;
+		matR.makeRotate(disturbXAngle, Vec3d(1, 0, 0),
+			disturbYAngle, Vec3d(0, 1, 0),
+			disturbZAngle, Vec3d(0, 0, 1));
+
+		postureMat = postureMat * matR;
+		_posture.push_back(postureMat);
+
 		/* 前进 */
 		camera->getCameraController().translateCamera(Vec3d(0, 0, -dist), COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);	
 
@@ -386,7 +420,9 @@ void OurMissile::outputInfo( ofstream& fout, unsigned frame )
 	if (frame <= _maxFrame)
 	{
 		Vec3d v = _track[frame - _delayFrame].getTrans();
-		fout << setiosflags(ios::fixed) << setprecision(3) << v.x() << ' ' << v.y() << ' ' << v.z() << ' ';
+		Vec3 hpr;
+		MatrixToHpr(hpr, _posture[frame - _delayFrame]);
+		fout << setiosflags(ios::fixed) << setprecision(4) << v.x() << ' ' << v.y() << ' ' << v.z() << ' ' << hpr.x() << ' ' << hpr.y() << ' ' << hpr.z() << ' ';
 		Vec2f d = _disturb[frame - _aimStartFrame];
 		fout << setprecision(0) << d.x() << ' ' << d.y();
 	}
