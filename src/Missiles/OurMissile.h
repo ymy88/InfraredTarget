@@ -32,6 +32,7 @@ private:
 	MatrixTransform*	_transformForMissile;
 	MatrixTransform*	_transformForHumanEye;
 	MatrixTransform*	_atTransform;
+	vector<Matrixd>		_posture;
 	Geode*				_trackGeode;
 	Label*				_label;
 

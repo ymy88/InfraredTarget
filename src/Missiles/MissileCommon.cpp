@@ -58,3 +58,90 @@ Geometry* createMissileTrackGeometry(const vector<Matrixd>& track, const Vec4d& 
 
 	return geom;
 }
+
+float ClampUnity(float x)
+{
+	if (x >  1.0f) { return  1.0f; }
+	if (x < -1.0f) { return -1.0f; }
+	return x;
+}
+
+void MatrixToHpr(osg::Vec3& hpr, const osg::Matrix& rotation)
+{
+	// implementation converted from plib's sg.cxx
+	// PLIB - A Suite of Portable Game Libraries
+	// Copyright (C) 1998,2002  Steve Baker
+	// For further information visit http://plib.sourceforge.net
+
+	osg::Matrix mat;
+
+	osg::Vec3 col1(rotation(0, 0), rotation(0, 1), rotation(0, 2));
+	double s = col1.length();
+
+	const double magic_epsilon = 0.00001;
+	if (s <= magic_epsilon)
+	{
+		hpr.set(0.0f, 0.0f, 0.0f);
+		return;
+	}
+
+
+	double oneOverS = 1.0f / s;
+	for (int i = 0; i < 3; ++i)
+	{
+		for (int j = 0; j < 3; ++j)
+		{
+			mat(i, j) = rotation(i, j) * oneOverS;
+		}
+	}
+
+
+	double sin_pitch = ClampUnity(mat(1, 2));
+	double pitch = asin(sin_pitch);
+	hpr[1] = osg::RadiansToDegrees(pitch);
+
+	double cp = cos(pitch);
+
+	if (cp > -magic_epsilon && cp < magic_epsilon)
+	{
+		double cr = ClampUnity(-mat(2,1));
+		double sr = ClampUnity(mat(0,1));
+
+		hpr[0] = 0.0f;
+		hpr[2] = osg::RadiansToDegrees(atan2(sr,cr));
+	}
+	else
+	{
+		double one_over_cp = 1.0 / cp;
+		double sr = ClampUnity(-mat(0,2) * one_over_cp);
+		double cr = ClampUnity( mat(2,2) * one_over_cp);
+		double sh = ClampUnity(-mat(1,0) * one_over_cp);
+		double ch = ClampUnity( mat(1,1) * one_over_cp);
+
+		if ((osg::equivalent(sh,0.0,magic_epsilon) && osg::equivalent(ch,0.0,magic_epsilon)) ||
+			(osg::equivalent(sr,0.0,magic_epsilon) && osg::equivalent(cr,0.0,magic_epsilon)) )
+		{
+			cr = ClampUnity(-mat(2,1));
+			sr = ClampUnity(mat(0,1));;
+
+			hpr[0] = 0.0f;
+		}
+		else
+		{
+			hpr[0] = osg::RadiansToDegrees(atan2(sh, ch));
+		}
+
+		hpr[2] = osg::RadiansToDegrees(atan2(sr, cr));
+	}
+
+	// 0 -> 2
+	// 1 -> 0
+	// 2 -> 1
+
+	double tmp = hpr[2];
+	hpr[2] = hpr[0];
+	hpr[0] = hpr[1];
+	hpr[1] = tmp;
+
+	return;
+}

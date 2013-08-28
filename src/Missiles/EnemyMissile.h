@@ -43,9 +43,10 @@ private:
 	unsigned int				_hitFrame;
 	
 	/* 更新明暗所需参数 */
-	double gray;
-	double gray0;
-	int grayState;
-	double grayDelta;
-	float grayX;
+	double	missileGray;
+	double	gray;
+	double	gray0;
+	int		grayState;
+	double	grayDelta;
+	float	grayX;
 };

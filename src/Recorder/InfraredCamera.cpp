@@ -3,7 +3,8 @@
 #include <GlobalConfig.h>
 #include <Recorder.h>
 
-const string IMAGEPATH = "./resources/Missiles/Image";
+//const string IMAGEPATH = "./resources/Missiles/Image";
+const string IMAGEPATH = "c:/Image";
 
 void MakeImageReal::operator()( osg::RenderInfo& renderInfo ) const
 {
