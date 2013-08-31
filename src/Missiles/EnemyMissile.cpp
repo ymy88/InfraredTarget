@@ -85,7 +85,7 @@ void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame,
 {
 	createTransformForMissile();
 	createTransformForBaits();
-	
+
 	double r0 = (situation.enemy.alt + EARTH_R) * 1000;
 	double v0 = situation.enemy.missile->speed * 1000;
 	double theta0 = DegreesToRadians(90 - situation.enemy.thetaEarth);
@@ -158,6 +158,7 @@ void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame,
 	_trackGeode->dirtyBound();
 
 	/* 更新明暗所需参数 */
+	missileGray = 1;
 	gray = 1;
 	gray0 = 1;
 	grayState = 1;
@@ -168,6 +169,7 @@ void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame,
 	_maxFrame = frame - 1;
 	begFrame = 0;
 	endFrame = _maxFrame;
+	_hitFrame = 0xffffffff;
 }
 
 void EnemyMissile::gotoFrame( unsigned int frame )
@@ -179,8 +181,9 @@ void EnemyMissile::gotoFrame( unsigned int frame )
 	}
 
 	/* 更新明暗 */
-	_missileMaterial->setEmission(Material::FRONT, Vec4d(sqrt(gray), 0, 0, 1));
+	_missileMaterial->setEmission(Material::FRONT, Vec4d(missileGray, 0, 0, 1));
 	_baitsMaterial->setEmission(Material::FRONT, Vec4d(gray, 0, 0, 1));
+	missileGray -= 0.0001;
 	if (grayState== 1)
 	{
 		gray -= grayDelta;
