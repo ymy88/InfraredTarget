@@ -189,5 +189,7 @@ pip-log.txt
 *.ymy
 
 #This project
+bin/InfraredSimulatord
+bin/InfraredSimulator
 !/bin/pthreadVC2.dll
 !/lib/pthreadVC2.lib
