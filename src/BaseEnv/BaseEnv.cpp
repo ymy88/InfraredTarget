@@ -17,8 +17,8 @@ bool BaseEnv::initPlugin()
 		OsgViewerBase* parentViewer = getParentViewer(i);
 		parentViewer->getMainCamera()->setCameraMinDistance(EARTH_R + 10);
 		parentViewer->getMainCamera()->setCameraMaxDistance(EARTH_R * 10);
-		parentViewer->getLayerManager()->addToNewLayer(earthNode, "Earth");
 		parentViewer->getLayerManager()->addToNewLayer(starsNode, "Stars");
+		parentViewer->getLayerManager()->addToNewLayer(earthNode, "Earth");
 	}
 	
 	InfraredCamera* camera = Recorder::inst()->getInfraredCamera();

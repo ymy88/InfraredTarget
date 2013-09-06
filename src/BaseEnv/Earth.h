@@ -2,8 +2,11 @@
 
 #include <PSDFCore/PSDFCore.h>
 
+#include <osg/Program>
+#include <osg/Shader>
+
 const int HALO_INNER_RADIUS = EARTH_R;
-const int HALO_OUTER_RADIUS = HALO_INNER_RADIUS + 500;
+const int HALO_OUTER_RADIUS = HALO_INNER_RADIUS + 100;
 
 class Earth
 {
@@ -16,4 +19,9 @@ public:
 private:
 	Node*	loadEarth();
 	Node*	createHalo();
+
+private:
+	Program*	_haloProgram;
+	Shader*		_haloVertObj;
+	Shader*		_haloFragObj;
 };
