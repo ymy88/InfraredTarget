@@ -6,29 +6,30 @@ void main()
 	// origin color
 	
 	vec3 vToEye = normalize(-vertex);
-	vec4 airColor = vec4(0.5, 0.5, 1, 0.7);
+	vec4 airColor = vec4(0.6, 0.6, 1, 0.4);
 	float dotVal = max(dot(normal, vToEye), 0.0);
 	float term = 0;
-	const float threshold = 0.2;
+	const float threshold = 0.25;
 	if (dotVal > threshold)
 	{
 		term = (1 - dotVal) / (1 - threshold);
 		term *= term;
 	}
-	else if (dotVal >= 0)
+	else if (dotVal >= 0.0)
 	{
 		term = dotVal / threshold;
 	}
 
 	
-	vec4 Idiff = airColor * term;
+	vec4 diffColor = airColor * term;
 	
 	
 	// consider the sun
 	
-	vec3 sunPos = gl_LightSource[0].position.xyz;
-	float sunTerm = 1.0 * (dot(normal, normalize(sunPos-vertex)) + 1.0);
-	
+	vec3 sunPos = normalize(gl_LightSource[0].position.xyz);
+	sunPos *= 100000;
+	float sunTerm = max( (dot(normal, normalize(sunPos-vertex))), 0.0 ) + 0.6;
+
 	
 	// consider eye position
 	float eyeTerm = 0;
@@ -37,12 +38,12 @@ void main()
 	{
 		eyeTerm = 1;
 	}
-	else if (dist > 0.0)
+	else if (dist > 50.0)
 	{
-		eyeTerm = dist / 300.0;
+		eyeTerm = (dist - 50.0) / 250.0;
 	}
 	
 	
-	gl_FragColor =  Idiff * sunTerm * eyeTerm;
+	gl_FragColor =  diffColor * sunTerm * eyeTerm;
 }
 

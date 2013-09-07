@@ -6,7 +6,7 @@
 #include <osg/Shader>
 
 const int HALO_INNER_RADIUS = EARTH_R;
-const int HALO_OUTER_RADIUS = HALO_INNER_RADIUS + 100;
+const int HALO_OUTER_RADIUS = HALO_INNER_RADIUS + 200;
 
 class Earth
 {
