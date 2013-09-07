@@ -35,12 +35,6 @@ EnemyMissile::EnemyMissile(OsgViewerBase* mainView)
 	
 	scaleTrans1->addChild(_transformForBaits);
 	scaleTrans2->addChild(_transformForBaits);
-	
-//	for (unsigned int i = 0; i < baitCount; ++i)
-//	{
-//		scaleTrans1->addChild(_transformsForBaits[i]);
-//		scaleTrans2->addChild(_transformsForBaits[i]);
-//	}
 
 	_transformForInfrared->addChild(scaleTrans1);
 	_transformForHumanEye->addChild(scaleTrans2);
@@ -68,6 +62,9 @@ EnemyMissile::EnemyMissile(OsgViewerBase* mainView)
 	group->addChild(_transformForHumanEye);
 	group->addChild(_label);
 
+	group->setNodeMask(0);
+	_transformForInfrared->setNodeMask(0);
+	
 	mainView->getLayerManager()->addToNewLayer(group, "Enemy Missile");
 	Recorder::inst()->getInfraredCamera()->addChild(_transformForInfrared);
 	
@@ -83,6 +80,9 @@ EnemyMissile::~EnemyMissile(void)
 
 void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame, unsigned int& endFrame )
 {
+	_transformForHumanEye->getParent(0)->setNodeMask(0xffffffff);
+	_transformForInfrared->setNodeMask(0xffffffff);
+
 	createTransformForMissile();
 	createTransformForBaits();
 
@@ -156,6 +156,7 @@ void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame,
 	Geometry* geom = createMissileTrackGeometry(_track, Vec4d(1, 0, 0, 1));
 	_trackGeode->addDrawable(geom);
 	_trackGeode->dirtyBound();
+
 
 	/* 更新明暗所需参数 */
 	missileGray = 1;

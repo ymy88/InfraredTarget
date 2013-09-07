@@ -192,6 +192,10 @@
 				>
 			</File>
 			<File
+				RelativePath=".\MySphereDrawable.cpp"
+				>
+			</File>
+			<File
 				RelativePath=".\Stars.cpp"
 				>
 			</File>
@@ -223,6 +227,10 @@
 			>
 			<File
 				RelativePath=".\BaseEnv.h"
+				>
+			</File>
+			<File
+				RelativePath=".\MySphereDrawable.h"
 				>
 			</File>
 			<File

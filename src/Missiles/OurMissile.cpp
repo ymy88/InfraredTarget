@@ -38,6 +38,7 @@ OurMissile::OurMissile(OsgViewerBase* mainView, EnemyMissile* enemyMissile)
 	group->addChild(_transformForHumanEye);
 	group->addChild(_atTransform);
 	group->addChild(_label);
+	group->setNodeMask(0);
 
 	mainView->getLayerManager()->addToNewLayer(group, "Our Missile");
 	
@@ -53,6 +54,8 @@ OurMissile::~OurMissile(void)
 
 void OurMissile::getReady( const Situation& situation, unsigned int& begFrame, unsigned int& endFrame )
 {
+	_transformForHumanEye->getParent(0)->setNodeMask(0xffffffff);
+
 	createTransformForMissile();
 	
 	begFrame = 0;
