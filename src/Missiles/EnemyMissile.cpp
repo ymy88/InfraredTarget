@@ -108,14 +108,13 @@ void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame,
 	do 
 	{
 		/* 计算导弹轨迹参数 */
-		double sEarth = vT * sin(thetaT) * t;	 /* 平行于地表的直线距离，近似等于沿着地表的曲面距离 */
-		double angle = sEarth * 0.001 / EARTH_R; /* 导弹在t到t1时刻跨过的弧度 */
-		camera.getCameraController().rotateCamera(AXIS_X, -angle, COORD_TYPE_BASE_POINT_EYE_POINT, ALL_POINTS);
+		double sEarth = vT * sin(thetaT) * t;	 /* 平行于地表的直线距离 */
+		camera.getCameraController().translateCamera(Vec3d(0, sEarth * 0.001, 0), COORD_TYPE_BASE_POINT_EYE_POINT, EYE_POINT_AND_AT_POINT);
 
 		rT1 = rT + vT * t * cos(thetaT);
 		vT1 = sqrt(2 * A + 2 * GM / rT1);
 		double tmp = B / (vT1 * rT1);
-		if (!isAtHeap && tmp > 1)  /* 由于double经度问题，得出的值可能略大于1 */
+		if (!isAtHeap && tmp >= 1)  /* 由于double经度问题，得出的值可能略大于1 */
 		{
 			thetaT1 = PI_2;
 			lastThetaBeforeHeap = thetaT; /* 保存到达极大值的前一个角度值 */
@@ -156,7 +155,6 @@ void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame,
 	Geometry* geom = createMissileTrackGeometry(_track, Vec4d(1, 0, 0, 1));
 	_trackGeode->addDrawable(geom);
 	_trackGeode->dirtyBound();
-
 
 	/* 更新明暗所需参数 */
 	missileGray = 1;
@@ -254,43 +252,6 @@ void EnemyMissile::handleSystemEvent( unsigned int eventType, int param1, int pa
 		_mainView->getMainCamera()->flyTo(_transformForHumanEye);
 	}
 }
-
-//void EnemyMissile::createTransformsForBaits( unsigned int count )
-//{
-//	_transformsForBaits.clear();
-//	_speedForBaits.clear();
-//	
-//	for (unsigned int i = 0; i < count; ++i)
-//	{
-//		osg::Sphere* sphere = new osg::Sphere(Vec3d(0, 0, 0), 0.18);
-//		ShapeDrawable* sphereDrawable = new ShapeDrawable(sphere);
-//
-//		Geode* geode = new Geode;
-//		geode->addDrawable(sphereDrawable);
-//
-//		MatrixTransform* trans = new MatrixTransform;
-//		trans->addChild(geode);
-//
-//		Vec3d v;
-//		double flagX = 1;
-//		if (rand() > 0.5 * RAND_MAX) { flagX = -1; }
-//		double flagY = 1;
-//		if (rand() > 0.5 * RAND_MAX) { flagY = -1; }
-//		v.x() = flagX * (5.0 * rand() / RAND_MAX + 5.0);
-//		v.y() = flagY * (5.0 * rand() / RAND_MAX + 5.0);
-//		v.z() = 0;
-//
-//		Matrixd mat;
-//		mat.makeTranslate(v);
-//		trans->setMatrix(mat);
-//
-//		Vec3d vv;
-//		vv = v * 0.001;
-//
-//		_transformsForBaits.push_back(trans);
-//		_speedForBaits.push_back(vv);
-//	}
-//}
 
 void EnemyMissile::createTransformForBaits()
 {

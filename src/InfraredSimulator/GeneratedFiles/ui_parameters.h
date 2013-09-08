@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'parameters.ui'
 **
-** Created: Tue Aug 27 20:48:44 2013
+** Created: Sat Sep 7 22:11:07 2013
 **      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
@@ -516,8 +516,8 @@ public:
         listPreset->setSelectionBehavior(QAbstractItemView::SelectRows);
         listPreset->setIconSize(QSize(26, 26));
         listPreset->setLayoutMode(QListView::SinglePass);
-        listPreset->setSpacing(0);
-        listPreset->setGridSize(QSize(0, 30));
+        listPreset->setSpacing(5);
+        listPreset->setGridSize(QSize(0, 38));
         listPreset->setViewMode(QListView::ListMode);
         listPreset->setWordWrap(false);
         btnAddPreset = new QToolButton(tabStart);

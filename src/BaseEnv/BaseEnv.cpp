@@ -18,7 +18,10 @@ bool BaseEnv::initPlugin()
 		parentViewer->getMainCamera()->setCameraMinDistance(EARTH_R + 10);
 		parentViewer->getMainCamera()->setCameraMaxDistance(EARTH_R * 10);
 		parentViewer->getLayerManager()->addToNewLayer(starsNode, "Stars");
-		parentViewer->getLayerManager()->addToNewLayer(earthNode, "Earth");
+
+		/* set topmost to true to make sure the atmosphere is the last to render,
+		   otherwise nothing can be seen beneath the atmosphere */
+		parentViewer->getLayerManager()->addToNewLayer(earthNode, "Earth", DYNAMIC_LAYER, true);
 	}
 	
 	InfraredCamera* camera = Recorder::inst()->getInfraredCamera();

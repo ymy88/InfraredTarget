@@ -254,8 +254,7 @@ unsigned OurMissile::flyByTrack(const Situation& situation, CameraBase* camera, 
 	{
 		/* 计算导弹轨迹参数 */
 		double sEarth = vT * sin(thetaT) * t;	 /* 平行于地表的直线距离，近似等于沿着地表的曲面距离 */
-		double angle = sEarth * 0.001 / EARTH_R; /* 导弹在t到t1时刻跨过的弧度 */
-		camera->getCameraController().rotateCamera(AXIS_X, -angle, COORD_TYPE_BASE_POINT_EYE_POINT, ALL_POINTS);
+		camera->getCameraController().translateCamera(Vec3d(0, sEarth * 0.001, 0), COORD_TYPE_BASE_POINT_EYE_POINT, EYE_POINT_AND_AT_POINT);
 
 		rT1 = rT + vT * t * cos(thetaT);
 		vT1 = sqrt(2 * A + 2 * GM / rT1);
