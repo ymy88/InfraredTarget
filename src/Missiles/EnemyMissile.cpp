@@ -97,7 +97,7 @@ void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame,
 	initCameraForTrackCalc(&camera, situation.enemy.loc->lon, situation.enemy.loc->lat, situation.enemy.alt, situation.enemy.thetaEarth, situation.enemy.thetaNorth);
 
 	_track.clear();
-	_track.push_back(camera.getCameraController().getCoordMatrix(COORD_TYPE_EYE_POINT));
+	_track.push_back(camera.getCameraController().getCoordMatrix(COORD_TYPE_EYE));
 
 	double t = 1.0 / situation.infrared.updateRate;
 	double rT = r0, vT = v0, thetaT = theta0;
@@ -109,7 +109,7 @@ void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame,
 	{
 		/* 计算导弹轨迹参数 */
 		double sEarth = vT * sin(thetaT) * t;	 /* 平行于地表的直线距离 */
-		camera.getCameraController().translateCamera(Vec3d(0, sEarth * 0.001, 0), COORD_TYPE_BASE_POINT_EYE_POINT, EYE_POINT_AND_AT_POINT);
+		camera.getCameraController().translateCamera(Vec3d(0, sEarth * 0.001, 0), COORD_TYPE_BASE_EYE, EYE_POINT_AND_AT_POINT);
 
 		rT1 = rT + vT * t * cos(thetaT);
 		vT1 = sqrt(2 * A + 2 * GM / rT1);
@@ -127,11 +127,11 @@ void EnemyMissile::getReady( const Situation& situation, unsigned int& begFrame,
 		}
 
 		/* 调整导弹转换矩阵 */
-		camera.getCameraController().translateCamera(Vec3d(0, 0, (rT1-rT)*0.001), COORD_TYPE_BASE_POINT_EYE_POINT, EYE_POINT_AND_AT_POINT);
-		camera.getCameraController().rotateCamera(AXIS_X, thetaT-thetaT1, COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);
+		camera.getCameraController().translateCamera(Vec3d(0, 0, (rT1-rT)*0.001), COORD_TYPE_BASE_EYE, EYE_POINT_AND_AT_POINT);
+		camera.getCameraController().rotateCamera(AXIS_X, thetaT-thetaT1, COORD_TYPE_EYE, EYE_POINT_AND_AT_POINT);
 
 		/* 记录导弹的矩阵 */
-		_track.push_back(camera.getCameraController().getCoordMatrix(COORD_TYPE_EYE_POINT));
+		_track.push_back(camera.getCameraController().getCoordMatrix(COORD_TYPE_EYE));
 		
 		rT = rT1;
 		vT = vT1;

@@ -12,12 +12,12 @@ void initCameraForTrackCalc( CameraBase* camera, float lon, float lat, float alt
 	camera->getCameraController().rotateCamera(AXIS_Y, DegreesToRadians(90 + lon), COORD_TYPE_WORLD, ALL_POINTS);
 
 	/* 处理仰角 */
-	camera->getCameraController().rotateCamera(AXIS_X, DegreesToRadians(90+thetaEarth), COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);
+	camera->getCameraController().rotateCamera(AXIS_X, DegreesToRadians(90+thetaEarth), COORD_TYPE_EYE, EYE_POINT_AND_AT_POINT);
 
 	Vec3d at = camera->getCameraController().getCurrAt();
 
 	/* 处理与正北的偏角 */
-	camera->getCameraController().rotateCamera(AXIS_Z, DegreesToRadians(-thetaNorth), COORD_TYPE_BASE_POINT_EYE_POINT, ALL_POINTS);
+	camera->getCameraController().rotateCamera(AXIS_Z, DegreesToRadians(-thetaNorth), COORD_TYPE_BASE_EYE, ALL_POINTS);
 
 	at = camera->getCameraController().getCurrAt();
 }

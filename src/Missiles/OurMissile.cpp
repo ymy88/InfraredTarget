@@ -73,7 +73,7 @@ void OurMissile::getReady( const Situation& situation, unsigned int& begFrame, u
 	_track.clear();
 	_posture.clear();
 	_disturb.clear();
-	_track.push_back(camera.getCameraController().getCoordMatrix(COORD_TYPE_EYE_POINT));
+	_track.push_back(camera.getCameraController().getCoordMatrix(COORD_TYPE_EYE));
 	_posture.push_back(Matrixd());
 
 	//
@@ -254,7 +254,7 @@ unsigned OurMissile::flyByTrack(const Situation& situation, CameraBase* camera, 
 	{
 		/* 计算导弹轨迹参数 */
 		double sEarth = vT * sin(thetaT) * t;	 /* 平行于地表的直线距离，近似等于沿着地表的曲面距离 */
-		camera->getCameraController().translateCamera(Vec3d(0, sEarth * 0.001, 0), COORD_TYPE_BASE_POINT_EYE_POINT, EYE_POINT_AND_AT_POINT);
+		camera->getCameraController().translateCamera(Vec3d(0, sEarth * 0.001, 0), COORD_TYPE_BASE_EYE, EYE_POINT_AND_AT_POINT);
 
 		rT1 = rT + vT * t * cos(thetaT);
 		vT1 = sqrt(2 * A + 2 * GM / rT1);
@@ -272,10 +272,10 @@ unsigned OurMissile::flyByTrack(const Situation& situation, CameraBase* camera, 
 		}
 
 		/* 调整导弹转换矩阵 */
-		camera->getCameraController().translateCamera(Vec3d(0, 0, (rT1-rT)*0.001), COORD_TYPE_BASE_POINT_EYE_POINT, EYE_POINT_AND_AT_POINT);
-		camera->getCameraController().rotateCamera(AXIS_X, thetaT-thetaT1, COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);
+		camera->getCameraController().translateCamera(Vec3d(0, 0, (rT1-rT)*0.001), COORD_TYPE_BASE_EYE, EYE_POINT_AND_AT_POINT);
+		camera->getCameraController().rotateCamera(AXIS_X, thetaT-thetaT1, COORD_TYPE_EYE, EYE_POINT_AND_AT_POINT);
 
-		const Matrixd& matOur = camera->getCameraController().getCoordMatrix(COORD_TYPE_EYE_POINT);
+		const Matrixd& matOur = camera->getCameraController().getCoordMatrix(COORD_TYPE_EYE);
 
 		/* 记录导弹的矩阵 */
 		_track.push_back(matOur);
@@ -327,7 +327,7 @@ unsigned OurMissile::aimAtTarget(const Situation& situation, CameraBase* camera,
 		/* 计算敌方导弹相对于自身的位置 */
 		const Matrixd& enemyMatrix = _enemyMissile->getMissileMatrixInFrame(frame + _delayFrame);
 		Vec3d enemyPos = Vec3d(0, 0, 0) * enemyMatrix;
-		Vec3d enemyPosEye = camera->getCameraController().switchCoordinateSystem_point(enemyPos, COORD_TYPE_WORLD, COORD_TYPE_EYE_POINT);
+		Vec3d enemyPosEye = camera->getCameraController().switchCoordinateSystem_point(enemyPos, COORD_TYPE_WORLD, COORD_TYPE_EYE);
 
 		/* 旋转我方导弹，对准敌方导弹 */
 		enemyPosEye.normalize();
@@ -349,22 +349,22 @@ unsigned OurMissile::aimAtTarget(const Situation& situation, CameraBase* camera,
 			}
 			Vec3d axis = sight ^ enemyPosEye;
 			
-			camera->getCameraController().rotateCamera(axis, angle, COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);
+			camera->getCameraController().rotateCamera(axis, angle, COORD_TYPE_EYE, EYE_POINT_AND_AT_POINT);
 			postureMat.makeRotate(angle, axis);
 		}
 
 		/* 判断是否会击中 */
-		enemyPosEye = camera->getCameraController().switchCoordinateSystem_point(enemyPos, COORD_TYPE_WORLD, COORD_TYPE_EYE_POINT);
+		enemyPosEye = camera->getCameraController().switchCoordinateSystem_point(enemyPos, COORD_TYPE_WORLD, COORD_TYPE_EYE);
 		if (/* targeted && */fabs(enemyPosEye.z()) <= dist)
 		{
 			Vec3d v = enemyPos - camera->getCameraController().getCurrEye();
 			camera->getCameraController().translateCamera(v, COORD_TYPE_WORLD, EYE_POINT_AND_AT_POINT);	
-			_track.push_back(camera->getCameraController().getCoordMatrix(COORD_TYPE_EYE_POINT));
+			_track.push_back(camera->getCameraController().getCoordMatrix(COORD_TYPE_EYE));
 			_posture.push_back(Matrixd());
 			_disturb.push_back(Vec2(0, 0));
 			_enemyMissile->setBeenHitFrame(_delayFrame + frame);
 
-			enemyPosEye = camera->getCameraController().switchCoordinateSystem_point(enemyPos, COORD_TYPE_WORLD, COORD_TYPE_EYE_POINT);
+			enemyPosEye = camera->getCameraController().switchCoordinateSystem_point(enemyPos, COORD_TYPE_WORLD, COORD_TYPE_EYE);
 
 			frame++;
 			break;
@@ -382,13 +382,13 @@ unsigned OurMissile::aimAtTarget(const Situation& situation, CameraBase* camera,
 		double disturbXAngle = sin(0.07 * frame) * tmp * rnd;
 		rnd = 0.2 * rand() / RAND_MAX + 0.9;
 		double disturbYAngle = sin(0.04 * frame) * tmp * rnd;
-		camera->getCameraController().rotateCamera(AXIS_X, disturbXAngle, COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);
-		camera->getCameraController().rotateCamera(AXIS_Y, disturbYAngle, COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);
+		camera->getCameraController().rotateCamera(AXIS_X, disturbXAngle, COORD_TYPE_EYE, EYE_POINT_AND_AT_POINT);
+		camera->getCameraController().rotateCamera(AXIS_Y, disturbYAngle, COORD_TYPE_EYE, EYE_POINT_AND_AT_POINT);
 
 		/* 翻转（翻转需要在扰动后做，才比较真实） */
 		rnd = 0.2 * rand() / RAND_MAX + 0.9;
 		double disturbZAngle = 0.1 * sin(0.03 * frame) * rnd;
-		camera->getCameraController().rotateCamera(AXIS_Z, disturbZAngle, COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);
+		camera->getCameraController().rotateCamera(AXIS_Z, disturbZAngle, COORD_TYPE_EYE, EYE_POINT_AND_AT_POINT);
 
 		Matrixd matR;
 		matR.makeRotate(disturbXAngle, Vec3d(1, 0, 0),
@@ -399,10 +399,10 @@ unsigned OurMissile::aimAtTarget(const Situation& situation, CameraBase* camera,
 		_posture.push_back(postureMat);
 
 		/* 前进 */
-		camera->getCameraController().translateCamera(Vec3d(0, 0, -dist), COORD_TYPE_EYE_POINT, EYE_POINT_AND_AT_POINT);	
+		camera->getCameraController().translateCamera(Vec3d(0, 0, -dist), COORD_TYPE_EYE, EYE_POINT_AND_AT_POINT);	
 
 		/* 记录相机的视点矩阵 */
-		_track.push_back(camera->getCameraController().getCoordMatrix(COORD_TYPE_EYE_POINT));
+		_track.push_back(camera->getCameraController().getCoordMatrix(COORD_TYPE_EYE));
 
 		/* 记录扰动 */
 		int x, y;

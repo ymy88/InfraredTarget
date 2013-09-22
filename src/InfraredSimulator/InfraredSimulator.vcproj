@@ -45,6 +45,7 @@
 				TreatWChar_tAsBuiltInType="false"
 				UsePrecompiledHeader="2"
 				DebugInformationFormat="0"
+				DisableSpecificWarnings="4819"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
@@ -116,6 +117,7 @@
 				TreatWChar_tAsBuiltInType="false"
 				UsePrecompiledHeader="2"
 				DebugInformationFormat="3"
+				DisableSpecificWarnings="4819"
 			/>
 			<Tool
 				Name="VCManagedResourceCompilerTool"
