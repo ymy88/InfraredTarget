@@ -66,7 +66,7 @@ void Database::getPresets(vector<Situation>& presets)
 		preset.infrared.blindRate	= sqlite3_column_double(_stmtGetPresets, 14);
 		preset.infrared.updateRate	= sqlite3_column_double(_stmtGetPresets, 15);
 		
-		preset.other.saveToFile			= (bool)sqlite3_column_int(_stmtGetPresets, 16);
+		preset.other.saveToFile			= sqlite3_column_int(_stmtGetPresets, 16) > 0;
 		preset.other.distForStartInfr	= sqlite3_column_int(_stmtGetPresets, 17);
 		
 		presets.push_back(preset);
