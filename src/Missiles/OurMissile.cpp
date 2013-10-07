@@ -111,19 +111,6 @@ void OurMissile::getReady( const Situation& situation, unsigned int& begFrame, u
 	begFrame += _delayFrame;
 
 	endFrame = _maxFrame;
-
-
-// 	static char ch = 'a';
-// 	ch++;
-// 	string file("a.txt");
-// 	file[0] = ch;
-// 	ofstream fout(file.c_str());
-// 
-// 	for (unsigned int i = 0; i < _track.size(); ++i)
-// 	{
-// 		Vec3d trans = _track[i].getTrans();
-// 		fout << trans.x() << '\t' << trans.y() << '\t' << trans.z() << endl;
-// 	}
 }
 
 void OurMissile::gotoFrame( unsigned int frame )

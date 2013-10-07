@@ -2,8 +2,8 @@
 #include "Missiles.h"
 #include <GlobalConfig.h>
 
-//const string DATA_FILE_PATH = "./resources/Missiles/data.txt";
-const string DATA_FILE_PATH = "c:/data.txt";
+const string DATA_FILE_PATH = "./resources/Missiles/data.txt";
+//const string DATA_FILE_PATH = "c:/data.txt";
 
 Missiles::Missiles(void)
 {

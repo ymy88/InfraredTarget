@@ -5,6 +5,9 @@
 #include <Recordable.h>
 #include <InfraredCamera.h>
 
+#include <osg/Program>
+#include <osg/Shader>
+
 const unsigned int MAX_END_FRAME = 60000;
 
 class RECORDER_DECL Recorder : public EventHandler
@@ -58,6 +61,10 @@ private:
 
 	vector<Recordable*> _objList;
 	Recordable*			_keyObj;
+	
+	Program*			_program;
+	Shader*				_vertObj;
+	Shader*				_fragObj;
 };
 
 

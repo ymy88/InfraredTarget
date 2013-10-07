@@ -25,29 +25,32 @@
 		F9147A7E17B4E6520079BD89 /* infraredsimulator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F91479C817B4E3C70079BD89 /* infraredsimulator.cpp */; };
 		F9147A7F17B4E6520079BD89 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F91479D117B4E3C70079BD89 /* main.cpp */; };
 		F9147A8017B4E6520079BD89 /* parameters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F91479D217B4E3C70079BD89 /* parameters.cpp */; };
-		F9147A9417B4EC2C0079BD89 /* libboost_program_options-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9317B4EC2C0079BD89 /* libboost_program_options-mt.a */; };
-		F9147A9617B4EC310079BD89 /* libboost_filesystem-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9517B4EC310079BD89 /* libboost_filesystem-mt.a */; };
-		F9147A9817B4EC330079BD89 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9717B4EC330079BD89 /* libboost_system-mt.a */; };
-		F9147A9A17B4EC500079BD89 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9717B4EC330079BD89 /* libboost_system-mt.a */; };
-		F9147A9B17B4EC510079BD89 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9717B4EC330079BD89 /* libboost_system-mt.a */; };
-		F9147A9C17B4EC510079BD89 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9717B4EC330079BD89 /* libboost_system-mt.a */; };
-		F9147A9D17B4EC520079BD89 /* libboost_system-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9717B4EC330079BD89 /* libboost_system-mt.a */; };
-		F9147A9E17B4EC540079BD89 /* libboost_filesystem-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9517B4EC310079BD89 /* libboost_filesystem-mt.a */; };
-		F9147A9F17B4EC550079BD89 /* libboost_filesystem-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9517B4EC310079BD89 /* libboost_filesystem-mt.a */; };
-		F9147AA017B4EC550079BD89 /* libboost_filesystem-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9517B4EC310079BD89 /* libboost_filesystem-mt.a */; };
-		F9147AA117B4EC550079BD89 /* libboost_filesystem-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9517B4EC310079BD89 /* libboost_filesystem-mt.a */; };
-		F9147AA217B4EC590079BD89 /* libboost_program_options-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9317B4EC2C0079BD89 /* libboost_program_options-mt.a */; };
-		F9147AA317B4EC590079BD89 /* libboost_program_options-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9317B4EC2C0079BD89 /* libboost_program_options-mt.a */; };
-		F9147AA417B4EC5A0079BD89 /* libboost_program_options-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9317B4EC2C0079BD89 /* libboost_program_options-mt.a */; };
-		F9147AA517B4EC5A0079BD89 /* libboost_program_options-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9147A9317B4EC2C0079BD89 /* libboost_program_options-mt.a */; };
 		F92CB1B417C12AB20072618A /* ListModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F92CB1B217C12AB20072618A /* ListModel.cpp */; };
 		F92CB1B617C130910072618A /* moc_ListModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F92CB1B517C130910072618A /* moc_ListModel.cpp */; };
 		F93B3B5F17B6256900D9FF26 /* Stars.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F93B3B5E17B6256900D9FF26 /* Stars.cpp */; };
-		F9542CD517C6710700299870 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F9542CD317C670DD00299870 /* libsqlite3.dylib */; };
 		F97D22EA17B7395100887FCF /* QtCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F97D22E917B7395100887FCF /* QtCore.framework */; };
 		F97D22EC17B7395400887FCF /* QtGui.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F97D22EB17B7395400887FCF /* QtGui.framework */; };
 		F97D22EE17B739FF00887FCF /* moc_parameters.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F97D22ED17B739FF00887FCF /* moc_parameters.cpp */; };
 		F984C38517C3BD43000962E7 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = F984C38417C3BD43000962E7 /* Database.h */; };
+		F99CA8AD1802B2080055E877 /* MySphereDrawable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F99CA8AB1802B2080055E877 /* MySphereDrawable.cpp */; };
+		F99CA8AE1802B2080055E877 /* MySphereDrawable.h in Headers */ = {isa = PBXBuildFile; fileRef = F99CA8AC1802B2080055E877 /* MySphereDrawable.h */; };
+		F99CA8B01802B2800055E877 /* libboost_program_options-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8AF1802B2800055E877 /* libboost_program_options-mt.dylib */; };
+		F99CA8B21802B2870055E877 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B11802B2870055E877 /* libboost_filesystem-mt.dylib */; };
+		F99CA8B41802B28A0055E877 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B31802B28A0055E877 /* libboost_system-mt.dylib */; };
+		F99CA8B81802B37F0055E877 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B31802B28A0055E877 /* libboost_system-mt.dylib */; };
+		F99CA8BA1802B3800055E877 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B31802B28A0055E877 /* libboost_system-mt.dylib */; };
+		F99CA8BC1802B3830055E877 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B11802B2870055E877 /* libboost_filesystem-mt.dylib */; };
+		F99CA8BE1802B3830055E877 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B11802B2870055E877 /* libboost_filesystem-mt.dylib */; };
+		F99CA8C01802B3860055E877 /* libboost_program_options-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8AF1802B2800055E877 /* libboost_program_options-mt.dylib */; };
+		F99CA8C21802B3880055E877 /* libboost_program_options-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8AF1802B2800055E877 /* libboost_program_options-mt.dylib */; };
+		F99CA8C31802B3AD0055E877 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B51802B2FE0055E877 /* libsqlite3.0.dylib */; };
+		F99CA8C41802B4170055E877 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B31802B28A0055E877 /* libboost_system-mt.dylib */; };
+		F99CA8C51802B41A0055E877 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B11802B2870055E877 /* libboost_filesystem-mt.dylib */; };
+		F99CA8C61802B41C0055E877 /* libboost_program_options-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8AF1802B2800055E877 /* libboost_program_options-mt.dylib */; };
+		F99CA8C81802B47E0055E877 /* libboost_thread-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8C71802B47E0055E877 /* libboost_thread-mt.dylib */; };
+		F99CA8C91802B4AF0055E877 /* libboost_program_options-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8AF1802B2800055E877 /* libboost_program_options-mt.dylib */; };
+		F99CA8CA1802B4B30055E877 /* libboost_filesystem-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B11802B2870055E877 /* libboost_filesystem-mt.dylib */; };
+		F99CA8CB1802B4B60055E877 /* libboost_system-mt.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F99CA8B31802B28A0055E877 /* libboost_system-mt.dylib */; };
 		F9AB94A017B621420041C31E /* BaseEnv.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9AB949E17B621420041C31E /* BaseEnv.cpp */; };
 		F9F1BE0117BE254A00C4DB80 /* TableModel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = F9F1BDFF17BE254900C4DB80 /* TableModel.cpp */; };
 		F9F1BE0317BE2F9000C4DB80 /* QGLWidgetAdapter.h in Headers */ = {isa = PBXBuildFile; fileRef = F9F1BE0217BE2F9000C4DB80 /* QGLWidgetAdapter.h */; };
@@ -231,19 +234,22 @@
 		F9147A5417B4E50C0079BD89 /* Missilesd.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = Missilesd.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9147A5C17B4E51C0079BD89 /* libRecorderd.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = libRecorderd.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 		F9147A6417B4E53F0079BD89 /* InfraredSimulatord */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = InfraredSimulatord; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9147A9317B4EC2C0079BD89 /* libboost_program_options-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_program_options-mt.a"; path = "/opt/local/lib/libboost_program_options-mt.a"; sourceTree = "<absolute>"; };
-		F9147A9517B4EC310079BD89 /* libboost_filesystem-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_filesystem-mt.a"; path = "/opt/local/lib/libboost_filesystem-mt.a"; sourceTree = "<absolute>"; };
-		F9147A9717B4EC330079BD89 /* libboost_system-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-mt.a"; path = "/opt/local/lib/libboost_system-mt.a"; sourceTree = "<absolute>"; };
 		F92CB1B217C12AB20072618A /* ListModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ListModel.cpp; sourceTree = "<group>"; };
 		F92CB1B317C12AB20072618A /* ListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ListModel.h; sourceTree = "<group>"; };
 		F92CB1B517C130910072618A /* moc_ListModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = moc_ListModel.cpp; sourceTree = "<group>"; };
 		F93B3B5E17B6256900D9FF26 /* Stars.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Stars.cpp; sourceTree = "<group>"; };
-		F9542CD317C670DD00299870 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = /usr/local/lib/libsqlite3.dylib; sourceTree = "<absolute>"; };
 		F97D22E817B6414000887FCF /* infraredsimulator.qrc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = infraredsimulator.qrc; sourceTree = "<group>"; };
 		F97D22E917B7395100887FCF /* QtCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtCore.framework; path = /Library/Frameworks/QtCore.framework; sourceTree = "<absolute>"; };
 		F97D22EB17B7395400887FCF /* QtGui.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtGui.framework; path = /Library/Frameworks/QtGui.framework; sourceTree = "<absolute>"; };
 		F97D22ED17B739FF00887FCF /* moc_parameters.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = moc_parameters.cpp; sourceTree = "<group>"; };
 		F984C38417C3BD43000962E7 /* Database.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		F99CA8AB1802B2080055E877 /* MySphereDrawable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MySphereDrawable.cpp; sourceTree = "<group>"; };
+		F99CA8AC1802B2080055E877 /* MySphereDrawable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MySphereDrawable.h; sourceTree = "<group>"; };
+		F99CA8AF1802B2800055E877 /* libboost_program_options-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_program_options-mt.dylib"; path = "/opt/local/lib/libboost_program_options-mt.dylib"; sourceTree = "<absolute>"; };
+		F99CA8B11802B2870055E877 /* libboost_filesystem-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_filesystem-mt.dylib"; path = "/opt/local/lib/libboost_filesystem-mt.dylib"; sourceTree = "<absolute>"; };
+		F99CA8B31802B28A0055E877 /* libboost_system-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_system-mt.dylib"; path = "/opt/local/lib/libboost_system-mt.dylib"; sourceTree = "<absolute>"; };
+		F99CA8B51802B2FE0055E877 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = ../../../../../opt/local/lib/libsqlite3.0.dylib; sourceTree = "<group>"; };
+		F99CA8C71802B47E0055E877 /* libboost_thread-mt.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libboost_thread-mt.dylib"; path = "../../../../../opt/local/lib/libboost_thread-mt.dylib"; sourceTree = "<group>"; };
 		F9AB949E17B621420041C31E /* BaseEnv.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseEnv.cpp; sourceTree = "<group>"; };
 		F9F1BDFF17BE254900C4DB80 /* TableModel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TableModel.cpp; sourceTree = "<group>"; };
 		F9F1BE0017BE254A00C4DB80 /* TableModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableModel.h; sourceTree = "<group>"; };
@@ -256,9 +262,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9147A9A17B4EC500079BD89 /* libboost_system-mt.a in Frameworks */,
-				F9147A9E17B4EC540079BD89 /* libboost_filesystem-mt.a in Frameworks */,
-				F9147AA217B4EC590079BD89 /* libboost_program_options-mt.a in Frameworks */,
+				F99CA8C41802B4170055E877 /* libboost_system-mt.dylib in Frameworks */,
+				F99CA8C51802B41A0055E877 /* libboost_filesystem-mt.dylib in Frameworks */,
+				F99CA8C61802B41C0055E877 /* libboost_program_options-mt.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -266,10 +272,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9147A9417B4EC2C0079BD89 /* libboost_program_options-mt.a in Frameworks */,
-				F9147A9817B4EC330079BD89 /* libboost_system-mt.a in Frameworks */,
-				F9147A9617B4EC310079BD89 /* libboost_filesystem-mt.a in Frameworks */,
-				F9542CD517C6710700299870 /* libsqlite3.dylib in Frameworks */,
+				F99CA8B81802B37F0055E877 /* libboost_system-mt.dylib in Frameworks */,
+				F99CA8BC1802B3830055E877 /* libboost_filesystem-mt.dylib in Frameworks */,
+				F99CA8C01802B3860055E877 /* libboost_program_options-mt.dylib in Frameworks */,
+				F99CA8C31802B3AD0055E877 /* libsqlite3.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,9 +283,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9147A9B17B4EC510079BD89 /* libboost_system-mt.a in Frameworks */,
-				F9147A9F17B4EC550079BD89 /* libboost_filesystem-mt.a in Frameworks */,
-				F9147AA317B4EC590079BD89 /* libboost_program_options-mt.a in Frameworks */,
+				F99CA8C81802B47E0055E877 /* libboost_thread-mt.dylib in Frameworks */,
+				F99CA8C91802B4AF0055E877 /* libboost_program_options-mt.dylib in Frameworks */,
+				F99CA8CA1802B4B30055E877 /* libboost_filesystem-mt.dylib in Frameworks */,
+				F99CA8CB1802B4B60055E877 /* libboost_system-mt.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,9 +294,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9147A9C17B4EC510079BD89 /* libboost_system-mt.a in Frameworks */,
-				F9147AA017B4EC550079BD89 /* libboost_filesystem-mt.a in Frameworks */,
-				F9147AA417B4EC5A0079BD89 /* libboost_program_options-mt.a in Frameworks */,
+				F99CA8BA1802B3800055E877 /* libboost_system-mt.dylib in Frameworks */,
+				F99CA8BE1802B3830055E877 /* libboost_filesystem-mt.dylib in Frameworks */,
+				F99CA8C21802B3880055E877 /* libboost_program_options-mt.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,11 +304,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F9147A9D17B4EC520079BD89 /* libboost_system-mt.a in Frameworks */,
-				F9147AA117B4EC550079BD89 /* libboost_filesystem-mt.a in Frameworks */,
-				F9147AA517B4EC5A0079BD89 /* libboost_program_options-mt.a in Frameworks */,
 				F97D22EA17B7395100887FCF /* QtCore.framework in Frameworks */,
 				F97D22EC17B7395400887FCF /* QtGui.framework in Frameworks */,
+				F99CA8B21802B2870055E877 /* libboost_filesystem-mt.dylib in Frameworks */,
+				F99CA8B41802B28A0055E877 /* libboost_system-mt.dylib in Frameworks */,
+				F99CA8B01802B2800055E877 /* libboost_program_options-mt.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -355,6 +362,8 @@
 			children = (
 				F9AB949E17B621420041C31E /* BaseEnv.cpp */,
 				F91479B017B4E3C70079BD89 /* BaseEnv.h */,
+				F99CA8AB1802B2080055E877 /* MySphereDrawable.cpp */,
+				F99CA8AC1802B2080055E877 /* MySphereDrawable.h */,
 				F91479B317B4E3C70079BD89 /* Earth.cpp */,
 				F91479B417B4E3C70079BD89 /* Earth.h */,
 				F93B3B5E17B6256900D9FF26 /* Stars.cpp */,
@@ -646,10 +655,11 @@
 			children = (
 				F97D22EB17B7395400887FCF /* QtGui.framework */,
 				F97D22E917B7395100887FCF /* QtCore.framework */,
-				F9542CD317C670DD00299870 /* libsqlite3.dylib */,
-				F9147A9717B4EC330079BD89 /* libboost_system-mt.a */,
-				F9147A9517B4EC310079BD89 /* libboost_filesystem-mt.a */,
-				F9147A9317B4EC2C0079BD89 /* libboost_program_options-mt.a */,
+				F99CA8B31802B28A0055E877 /* libboost_system-mt.dylib */,
+				F99CA8B11802B2870055E877 /* libboost_filesystem-mt.dylib */,
+				F99CA8AF1802B2800055E877 /* libboost_program_options-mt.dylib */,
+				F99CA8C71802B47E0055E877 /* libboost_thread-mt.dylib */,
+				F99CA8B51802B2FE0055E877 /* libsqlite3.0.dylib */,
 			);
 			name = Library;
 			sourceTree = "<group>";
@@ -661,6 +671,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F99CA8AE1802B2080055E877 /* MySphereDrawable.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -840,6 +851,7 @@
 				F9147A7017B4E5C40079BD89 /* StdAfx.cpp in Sources */,
 				F9AB94A017B621420041C31E /* BaseEnv.cpp in Sources */,
 				F93B3B5F17B6256900D9FF26 /* Stars.cpp in Sources */,
+				F99CA8AD1802B2080055E877 /* MySphereDrawable.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -982,6 +994,7 @@
 					bin,
 					/opt/local/include,
 					/usr/local/lib,
+					.,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1032,6 +1045,7 @@
 					bin,
 					/opt/local/include,
 					/usr/local/lib,
+					.,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "";

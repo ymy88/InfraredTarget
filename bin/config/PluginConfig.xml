@@ -4,15 +4,16 @@
 
     <defaultPluginPath>./plugins</defaultPath>
     <defaultDebugPostfix>d</defaultDebugPostfix>
-    <defaultPluginPostfix>dll</defaultPostfix>
+    <!-- defaultPluginPostfix>dll</defaultPostfix -->
+    <defaultPluginPostfix>dylib</defaultPostfix>
 
     <plugins>
         <!--
         Format:
         <plugin>
-            <path>./foo</path>                  // optional   default:.
-            <postfix>bar</postfix>              // optional   default:dll(windows)/so(linux)
-            <debugPostfix>d</debugPostfix>      // optional   default:d
+            <path>./foo</path>                  // optional
+            <postfix>bar</postfix>              // optional
+            <debugPostfix>d</debugPostfix>      // optional
             <name>Myplugin</name>               // necessary
 
             // If it is a layer plugin, two more tags:
@@ -28,12 +29,12 @@
         <plugin>
             <name>BaseEnv</name>
             <displayMode>Both</displayMode>
-            <addToViews> </addToViews>
+            <addToViews></addToViews>
         </plugin>
         <plugin>
             <name>Missiles</name>
             <displayMode>Both</displayMode>
-            <addToViews> </addToViews>
+            <addToViews></addToViews>
         </plugin>
 
     </plugins>

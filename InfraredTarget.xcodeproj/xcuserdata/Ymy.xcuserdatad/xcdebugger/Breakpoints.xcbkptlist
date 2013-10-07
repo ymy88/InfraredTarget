@@ -415,9 +415,7 @@
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "32"
-         endingLineNumber = "32"
-         landmarkName = "Earth::loadEarth()"
-         landmarkType = "5">
+         endingLineNumber = "32">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
@@ -625,6 +623,136 @@
          startingLineNumber = "138"
          endingLineNumber = "138"
          landmarkName = "parameters::onAddNewRow()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "src/Missiles/Missiles.cpp"
+         timestampString = "402834632.327754"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "20"
+         endingLineNumber = "20"
+         landmarkName = "Missiles::initPlugin()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "src/Missiles/Missiles.cpp"
+         timestampString = "402834634.019885"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "30"
+         endingLineNumber = "30"
+         landmarkName = "Missiles::getReady( const Situation&amp; situation, unsigned int&amp; begFrame, unsigned int&amp; endFrame )"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "src/Missiles/Missiles.cpp"
+         timestampString = "402834680.8532"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "23"
+         endingLineNumber = "23"
+         landmarkName = "Missiles::initPlugin()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "src/Missiles/Missiles.cpp"
+         timestampString = "402834702.525924"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
+         landmarkName = "Missiles::initPlugin()"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "src/Missiles/EnemyMissile.cpp"
+         timestampString = "402834720.594385"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "8"
+         endingLineNumber = "8"
+         landmarkName = "EnemyMissile::EnemyMissile(OsgViewerBase* mainView)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "src/Missiles/EnemyMissile.cpp"
+         timestampString = "402834805.017055"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "56"
+         endingLineNumber = "56"
+         landmarkName = "EnemyMissile::EnemyMissile(OsgViewerBase* mainView)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../PluginSDF-1.0.0/src/PSDFCore/Label/Label.cpp"
+         timestampString = "402834829.723289"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "11"
+         endingLineNumber = "11"
+         landmarkName = "Label::Label(const osgText::String&amp; content, unsigned short size, float x, float y, float z, float r, float g, float b, osgText::Text::AlignmentType align)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../PluginSDF-1.0.0/src/PSDFCore/Label/Label.cpp"
+         timestampString = "402838807.007247"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "12"
+         endingLineNumber = "12"
+         landmarkName = "Label::Label(const osgText::String&amp; content, unsigned short size, float x, float y, float z, float r, float g, float b, osgText::Text::AlignmentType align)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../PluginSDF-1.0.0/src/PSDFCore/Label/Label.cpp"
+         timestampString = "402839373.82048"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "21"
+         endingLineNumber = "21"
+         landmarkName = "Label::Label(const osgText::String&amp; content, unsigned short size, float x, float y, float z, float r, float g, float b, osgText::Text::AlignmentType align)"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "src/Recorder/Recorder.cpp"
+         timestampString = "402855787.570178"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "193"
+         endingLineNumber = "193"
+         landmarkName = "Recorder::setInfraredView( OsgViewerBase* infraredView )"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

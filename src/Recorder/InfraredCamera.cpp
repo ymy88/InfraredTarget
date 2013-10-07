@@ -3,8 +3,8 @@
 #include <GlobalConfig.h>
 #include <Recorder.h>
 
-//const string IMAGEPATH = "./resources/Missiles/Image";
-const string IMAGEPATH = "c:/Image";
+const string IMAGEPATH = "./resources/Missiles/Image";
+//const string IMAGEPATH = "c:/Image";
 
 void MakeImageReal::operator()( osg::RenderInfo& renderInfo ) const
 {
@@ -58,8 +58,8 @@ void InfraredCamera::getReady( const Situation& situation, unsigned int& begFram
 
 	// handle texture
 
-	_image->allocateImage(resolution, resolution, 1, GL_LUMINANCE, GL_UNSIGNED_BYTE);
-	_image->setInternalTextureFormat(GL_LUMINANCE);
+	_image->allocateImage(resolution, resolution, 1, GL_LUMINANCE, GL_UNSIGNED_INT);
+	_image->setInternalTextureFormat(GL_RGBA);
 	Recorder::inst()->setInfraredTexture(_image);
 
 	// handle camera property

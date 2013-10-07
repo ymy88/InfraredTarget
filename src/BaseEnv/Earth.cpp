@@ -15,7 +15,7 @@ Node* Earth::createEarth()
 		earthNode->getOrCreateStateSet()->setMode(GL_NORMALIZE, StateAttribute::ON);
 
 		earthNode->getOrCreateStateSet()->setRenderBinDetails(0, "RenderBin");
-		haloNode->getOrCreateStateSet()->setRenderBinDetails(1, "TransparentBin");
+		haloNode->getOrCreateStateSet()->setRenderBinDetails(1, "RenderBin");
 
 		osg::CullFace* cullFace = new osg::CullFace(CullFace::BACK);
 		earthNode->getOrCreateStateSet()->setAttributeAndModes(cullFace);

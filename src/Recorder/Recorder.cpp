@@ -2,6 +2,8 @@
 #include <Recorder.h>
 #include <GlobalConfig.h>
 #include <PSDFViewQt/PSDFViewQt.h>
+#include <osg/ShaderAttribute>
+#include <osg/Uniform>
 
 Recorder* Recorder::inst()
 {
@@ -177,6 +179,20 @@ void Recorder::setInfraredView( OsgViewerBase* infraredView )
 	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(0, _texture);
 	Geode* geode = new Geode;
 	geode->addDrawable(_geom);
+	
+	_program = new Program;
+	_vertObj = new Shader(Shader::VERTEX);
+	_fragObj = new Shader(Shader::FRAGMENT);
+	_program->addShader(_vertObj);
+	_program->addShader(_fragObj);
+	geode->getOrCreateStateSet()->setAttributeAndModes(_program, StateAttribute::ON);
+	geode->getOrCreateStateSet()->addUniform(new Uniform(Uniform::UNSIGNED_INT_SAMPLER_2D, "tex", 0));
+	
+	
+	bool res;
+	res = _vertObj->loadShaderSourceFromFile("./resources/camera.vert");
+	res = _fragObj->loadShaderSourceFromFile("./resources/camera.frag");
+
 
 	infraredView->getLayerManager()->addToNewLayer(_infraredCamera, "InfraredCamera");
 	infraredView->getScreenManager()->addScreenItem(geode, SCREEN_CENTER_CENTER, 0, 0);
