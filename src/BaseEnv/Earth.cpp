@@ -24,7 +24,7 @@ Node* Earth::createEarth()
 
 	Group* group = new Group;
 	group->addChild(earthNode);
-	group->addChild(haloNode);
+	//group->addChild(haloNode);
 	group->getOrCreateStateSet()->setMode(GL_BLEND, StateAttribute::ON);
 
 	return group;
@@ -33,7 +33,7 @@ Node* Earth::createEarth()
 Node* Earth::loadEarth()
 {
 	//Node* earthNode = osgDB::readNodeFile("./resources/Earth/globe.ive");
-	Node* earthNode = osgDB::readNodeFile("../../Earth_resource/gansu.ive");
+	Node* earthNode = osgDB::readNodeFile("../../Earth_resource/globe.ive");
 	if (!earthNode)
 	{
 		return NULL;
