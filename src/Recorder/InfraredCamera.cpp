@@ -162,14 +162,14 @@ InfraredCamera::InfraredCamera(void) : CameraBase(NULL, false)
 	const int size = 512;
 	_geom = osg::createTexturedQuadGeometry(Vec3d(0, 0, 0), Vec3d(size, 0, 0), Vec3d(0, size, 0));
 	_geom->getOrCreateStateSet()->setMode(GL_BLEND, StateAttribute::ON);
-	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(0, _texture);
+	//_geom->getOrCreateStateSet()->setTextureAttributeAndModes(0, _texture);
 
 	Texture2D* texPerm = createPermTexture();
 	Texture1D* texSimplex = createSimplexTexture();
 	Texture2D* texGrad = createGradTexture();
-	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(1, texPerm);
-	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(2, texSimplex);
-	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(3, texGrad);
+	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(0, texPerm);
+	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(1, texSimplex);
+	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(2, texGrad);
 
 	Geode* geode = new Geode;
 	geode->addDrawable(_geom);
@@ -180,11 +180,11 @@ InfraredCamera::InfraredCamera(void) : CameraBase(NULL, false)
 	_program->addShader(_vertObj);
 	_program->addShader(_fragObj);
 	_geom->getOrCreateStateSet()->setAttributeAndModes(_program, StateAttribute::ON);
-	_geom->getOrCreateStateSet()->addUniform(new Uniform("texTarget", 0));
-	_geom->getOrCreateStateSet()->addUniform(new Uniform("texPerm", 1));
-	_geom->getOrCreateStateSet()->addUniform(new Uniform("texSimplex", 2));
-	_geom->getOrCreateStateSet()->addUniform(new Uniform("texGrad", 3));
-	_geom->getOrCreateStateSet()->addUniform(new Uniform("frame", 0.0f));
+	//_geom->getOrCreateStateSet()->addUniform(new Uniform("texTarget", 0));
+	_geom->getOrCreateStateSet()->addUniform(new Uniform("permTexture", 0));
+	_geom->getOrCreateStateSet()->addUniform(new Uniform("simplexTexture", 1));
+	_geom->getOrCreateStateSet()->addUniform(new Uniform("gradTexture", 2));
+	_geom->getOrCreateStateSet()->addUniform(new Uniform("time", 0.0f));
 
 	_vertObj->loadShaderSourceFromFile("./resources/camera.vert");
 	_fragObj->loadShaderSourceFromFile("./resources/camera.frag");
@@ -249,7 +249,7 @@ void InfraredCamera::gotoFrame(unsigned int frame)
 	_makeImageRealCallback->frame = frame;
 	_makeImageRealCallback->isEnd = false;
 
-	const StateSet::RefUniformPair* uniformPair = _geom->getOrCreateStateSet()->getUniformPair("frame");
+	const StateSet::RefUniformPair* uniformPair = _geom->getOrCreateStateSet()->getUniformPair("time");
 	Uniform* uniform = uniformPair->first.get();
 	uniform->set((float)frame);
 }

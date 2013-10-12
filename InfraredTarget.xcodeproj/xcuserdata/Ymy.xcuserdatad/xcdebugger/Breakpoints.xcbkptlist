@@ -752,7 +752,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "193"
          endingLineNumber = "193"
-         landmarkName = "Recorder::setInfraredView( OsgViewerBase* infraredView )"
+         landmarkName = "Recorder::allObjGotoCurrentFrame()"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

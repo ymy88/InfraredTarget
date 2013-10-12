@@ -16,7 +16,6 @@ Recorder::Recorder()
 	_isPlaying = true;
 	_frameInc = 1;
 	_keyObj = NULL;
-	_infraredCamera = new InfraredCamera;
 }
 
 Recorder::~Recorder(void)
@@ -170,6 +169,7 @@ void Recorder::setMainView( OsgViewerBase* mainView )
 
 void Recorder::setInfraredView( OsgViewerBase* infraredView )
 {
+	_infraredCamera = new InfraredCamera;
 	infraredView->getLayerManager()->addToNewLayer(_infraredCamera, "InfraredCamera");
 	infraredView->getScreenManager()->addScreenItem(_infraredCamera->getLayer(), SCREEN_LEFT_BOTTOM, 0, 0);
 }
