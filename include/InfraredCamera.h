@@ -26,13 +26,21 @@ public:
 	InfraredCamera(void);
 	~InfraredCamera(void);
 
-	void adjustCamera(int viewWidth, int viewHeight ) {}
-	void resize(int viewWidth, int viewHeight) {}
-	void reset() {}
+	//
+	// from CameraBase
+	//
+	virtual void	adjustCamera(int viewWidth, int viewHeight ) {}
+	virtual void	resize(int viewWidth, int viewHeight) {}
+	virtual void	reset() {}
 
+	//
+	// from Recordable
+	//
 	virtual void getReady(const Situation& situation, unsigned int& begFrame, unsigned int& endFrame);
 	virtual void gotoFrame(unsigned int frame);
 	virtual void end();
+
+	Node*	getLayer() { Geode* g = new Geode; g->addDrawable(_geom); return g; }
 
 private:
 	Image*				_image;
@@ -42,4 +50,11 @@ private:
 
 	MakeImageReal*		_makeImageRealCallback;
 	unsigned int		_delayFrame;
+
+	Geometry*			_geom;
+	Texture2D*			_texture;
+
+	Program*			_program;
+	Shader*				_vertObj;
+	Shader*				_fragObj;
 };

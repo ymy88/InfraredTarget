@@ -27,8 +27,6 @@ public:
 
 	void			addRecordable(Recordable* obj, bool isKey = false);
 
-	void			setInfraredTexture(Image* image);
-
 	void			getReady();
 	void			play();
 	void			stop();
@@ -56,15 +54,9 @@ private:
 	int					_frameInc;
 
 	InfraredCamera*		_infraredCamera;
-	Geometry*			_geom;
-	Texture2D*			_texture;
 
 	vector<Recordable*> _objList;
 	Recordable*			_keyObj;
-	
-	Program*			_program;
-	Shader*				_vertObj;
-	Shader*				_fragObj;
 };
 
 

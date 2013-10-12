@@ -1,7 +1,8 @@
 /********************************************************************************
 ** Form generated from reading UI file 'parameters.ui'
 **
-** Created by: Qt User Interface Compiler version 4.8.5
+** Created: Fri Oct 11 21:13:03 2013
+**      by: Qt User Interface Compiler version 4.7.4
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -458,6 +459,7 @@ public:
 
         editResolution = new QLineEdit(layoutWidget_5);
         editResolution->setObjectName(QString::fromUtf8("editResolution"));
+        editResolution->setEnabled(false);
         editResolution->setMinimumSize(QSize(120, 0));
         editResolution->setMaximumSize(QSize(120, 16777215));
         editResolution->setFont(font1);

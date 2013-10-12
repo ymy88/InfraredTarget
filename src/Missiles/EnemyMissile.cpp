@@ -25,11 +25,10 @@ EnemyMissile::EnemyMissile(OsgViewerBase* mainView)
 	scaleTrans1->addChild(_transformForMissile);
 
 	MatrixTransform* scaleTrans2 = new MatrixTransform;
-	//m.makeScale(0.1, 0.1, 0.1);
+	//m.makeScale(100, 100, 100);
 	scaleTrans2->setMatrix(m);
 	scaleTrans2->addChild(_transformForMissile);
 
-	//createTransformsForBaits(baitCount);
 	_transformForBaits = NULL;
 	createTransformForBaits();
 	
@@ -39,19 +38,28 @@ EnemyMissile::EnemyMissile(OsgViewerBase* mainView)
 	_transformForInfrared->addChild(scaleTrans1);
 	_transformForHumanEye->addChild(scaleTrans2);
 
-	_missileMaterial = new osg::Material;
-	_missileMaterial->setAmbient(Material::FRONT, Vec4d(0, 0, 0, 1));
-	_missileMaterial->setDiffuse(Material::FRONT, Vec4d(0, 0, 0, 1));
-	_missileMaterial->setSpecular(Material::FRONT, Vec4d(0, 0, 0, 1));
-	_missileMaterial->setEmission(Material::FRONT, Vec4d(0, 0, 0, 1));
-	_transformForMissile->getOrCreateStateSet()->setAttributeAndModes(_missileMaterial, StateAttribute::ON | StateAttribute::OVERRIDE);
+	Program* prog = new Program;
+	Shader* vertObj = new Shader(Shader::VERTEX);
+	Shader* fragObj = new Shader(Shader::FRAGMENT);
+	vertObj->loadShaderSourceFromFile("./resources/Missiles/missiles.vert");
+	fragObj->loadShaderSourceFromFile("./resources/Missiles/missiles.frag");
+	prog->addShader(vertObj);
+	prog->addShader(fragObj);
+	_transformForMissile->getOrCreateStateSet()->setAttributeAndModes(prog, StateAttribute::ON | StateAttribute::OVERRIDE);
 
-	_baitsMaterial = new osg::Material;
-	_baitsMaterial->setAmbient(Material::FRONT, Vec4d(0, 0, 0, 1));
-	_baitsMaterial->setDiffuse(Material::FRONT, Vec4d(0, 0, 0, 1));
-	_baitsMaterial->setSpecular(Material::FRONT, Vec4d(0, 0, 0, 1));
-	_baitsMaterial->setEmission(Material::FRONT, Vec4d(0, 0, 0, 1));
-	_transformForBaits->getOrCreateStateSet()->setAttributeAndModes(_baitsMaterial, StateAttribute::ON | StateAttribute::OVERRIDE);
+	//_missileMaterial = new osg::Material;
+	//_missileMaterial->setAmbient(Material::FRONT, Vec4d(0, 0, 0, 1));
+	//_missileMaterial->setDiffuse(Material::FRONT, Vec4d(0, 0, 0, 1));
+	//_missileMaterial->setSpecular(Material::FRONT, Vec4d(0, 0, 0, 1));
+	//_missileMaterial->setEmission(Material::FRONT, Vec4d(0, 0, 0, 1));
+	//_transformForMissile->getOrCreateStateSet()->setAttributeAndModes(_missileMaterial, StateAttribute::ON | StateAttribute::OVERRIDE);
+
+	//_baitsMaterial = new osg::Material;
+	//_baitsMaterial->setAmbient(Material::FRONT, Vec4d(0, 0, 0, 1));
+	//_baitsMaterial->setDiffuse(Material::FRONT, Vec4d(0, 0, 0, 1));
+	//_baitsMaterial->setSpecular(Material::FRONT, Vec4d(0, 0, 0, 1));
+	//_baitsMaterial->setEmission(Material::FRONT, Vec4d(0, 0, 0, 1));
+	//_transformForBaits->getOrCreateStateSet()->setAttributeAndModes(_baitsMaterial, StateAttribute::ON | StateAttribute::OVERRIDE);
 
 	_label = new Label(osgText::String("弹道导弹", osgText::String::ENCODING_UTF8),
 					   14, 0, 0, 0, 1, 1, 1, TextBase::LEFT_BOTTOM);
@@ -180,24 +188,24 @@ void EnemyMissile::gotoFrame( unsigned int frame )
 	}
 
 	/* 更新明暗 */
-	_missileMaterial->setEmission(Material::FRONT, Vec4d(missileGray, 0, 0, 1));
-	_baitsMaterial->setEmission(Material::FRONT, Vec4d(gray, 0, 0, 1));
-	missileGray -= 0.0001;
-	if (grayState== 1)
-	{
-		gray -= grayDelta;
-		gray0 = gray;
-		grayDelta /= 1.0008;
-		if (gray <= 0.50032)
-		{
-			grayState = 2;
-		}
-	}
-	else
-	{
-		gray = -0.5 * (1/grayX - 1) + gray0;
-		grayX += 0.005;
-	}
+	//_missileMaterial->setEmission(Material::FRONT, Vec4d(missileGray, 0, 0, 1));
+	//_baitsMaterial->setEmission(Material::FRONT, Vec4d(gray, 0, 0, 1));
+	//missileGray -= 0.0001;
+	//if (grayState== 1)
+	//{
+	//	gray -= grayDelta;
+	//	gray0 = gray;
+	//	grayDelta /= 1.0008;
+	//	if (gray <= 0.50032)
+	//	{
+	//		grayState = 2;
+	//	}
+	//}
+	//else
+	//{
+	//	gray = -0.5 * (1/grayX - 1) + gray0;
+	//	grayX += 0.005;
+	//}
 
 	/* 更新进动 */
 	Matrix mat;
@@ -316,7 +324,8 @@ void EnemyMissile::createTransformForMissile()
 	if (situ && situ->enemy.missile)
 	{
 		string file = situ->enemy.missile->modelFile;
-		_transformForMissile->addChild(osgDB::readNodeFile("./resources/Missiles/" + file));
+		Node* node = osgDB::readNodeFile("./resources/Missiles/" + file);
+		_transformForMissile->addChild(node);
 	}
 }
 

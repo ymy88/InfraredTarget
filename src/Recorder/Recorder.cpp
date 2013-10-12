@@ -16,6 +16,7 @@ Recorder::Recorder()
 	_isPlaying = true;
 	_frameInc = 1;
 	_keyObj = NULL;
+	_infraredCamera = new InfraredCamera;
 }
 
 Recorder::~Recorder(void)
@@ -169,38 +170,8 @@ void Recorder::setMainView( OsgViewerBase* mainView )
 
 void Recorder::setInfraredView( OsgViewerBase* infraredView )
 {
-	_infraredCamera = new InfraredCamera;
-
-	_texture = new Texture2D;
-	
-	int size = 512;
-	_geom = osg::createTexturedQuadGeometry(Vec3d(-size/2, -size/2, 0), Vec3d(size, 0, 0), Vec3d(0, size, 0));
-	_geom->getOrCreateStateSet()->setMode(GL_BLEND, StateAttribute::ON);
-	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(0, _texture);
-	Geode* geode = new Geode;
-	geode->addDrawable(_geom);
-	
-	_program = new Program;
-	_vertObj = new Shader(Shader::VERTEX);
-	_fragObj = new Shader(Shader::FRAGMENT);
-	_program->addShader(_vertObj);
-	_program->addShader(_fragObj);
-	geode->getOrCreateStateSet()->setAttributeAndModes(_program, StateAttribute::ON);
-	geode->getOrCreateStateSet()->addUniform(new Uniform(Uniform::UNSIGNED_INT_SAMPLER_2D, "tex", 0));
-	
-	
-	bool res;
-	res = _vertObj->loadShaderSourceFromFile("./resources/camera.vert");
-	res = _fragObj->loadShaderSourceFromFile("./resources/camera.frag");
-
-
 	infraredView->getLayerManager()->addToNewLayer(_infraredCamera, "InfraredCamera");
-	infraredView->getScreenManager()->addScreenItem(geode, SCREEN_CENTER_CENTER, 0, 0);
-}
-
-void Recorder::setInfraredTexture(Image* image)
-{
-	_texture->setImage(image);
+	infraredView->getScreenManager()->addScreenItem(_infraredCamera->getLayer(), SCREEN_LEFT_BOTTOM, 0, 0);
 }
 
 InfraredCamera* Recorder::getInfraredCamera()
