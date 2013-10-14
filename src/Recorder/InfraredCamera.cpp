@@ -35,8 +35,8 @@ const static int grad4[32][4]= {{0,1,1,1}, {0,1,1,-1}, {0,1,-1,1}, {0,1,-1,-1}, 
 	{1,1,1,0}, {1,1,-1,0}, {1,-1,1,0}, {1,-1,-1,0},
 	{-1,1,1,0}, {-1,1,-1,0}, {-1,-1,1,0}, {-1,-1,-1,0}};
 
-const static unsigned char simplex4[][4] = {{0,64,128,192},{0,64,192,128},{0,0,0,0},
-	{0,128,192,64},{0,0,0,0},{0,0,0,0},{0,0,0,0},{64,128,192,0},
+const static unsigned char simplex4[][4] = {{0,64,128,192},{0,64,192,128},{0,0,0,0},{0,128,192,64},
+	{0,0,0,0},{0,0,0,0},{0,0,0,0},{64,128,192,0},
 	{0,128,64,192},{0,0,0,0},{0,192,64,128},{0,192,128,64},
 	{0,0,0,0},{0,0,0,0},{0,0,0,0},{64,192,128,0},
 	{0,0,0,0},{0,0,0,0},{0,0,0,0},{0,0,0,0},
@@ -63,7 +63,7 @@ static Texture2D* createPermTexture()
 		for (int j = 0; j < 512; ++j)
 		{
 			int offset = (i * 512 + j) * 4;
-			unsigned char value = perm[(j + perm[i]) & 0xff];
+			unsigned char value = perm[(j + perm[i & 0xff]) & 0xff];
 			pixels[offset]   = grad3[value & 0x0f][0] * 64 + 64;	// Gradient x
 			pixels[offset+1] = grad3[value & 0x0f][1] * 64 + 64;	// Gradient y
 			pixels[offset+2] = grad3[value & 0x0f][2] * 64 + 64;	// Gradient z
@@ -102,7 +102,7 @@ static Texture2D* createGradTexture()
 		for (int j = 0; j < 512; ++j)
 		{
 			int offset = (i * 512 + j) * 4;
-			unsigned char value = perm[(j + perm[i]) & 0xff];
+			unsigned char value = perm[(j + perm[i & 0xff]) & 0xff];
 			pixels[offset]   = grad4[value & 0x1f][0] * 64 + 64;	// Gradient x
 			pixels[offset+1] = grad4[value & 0x1f][1] * 64 + 64;	// Gradient y
 			pixels[offset+2] = grad4[value & 0x1f][2] * 64 + 64;	// Gradient z
@@ -140,7 +140,6 @@ InfraredCamera::InfraredCamera(void) : CameraBase(NULL, false)
 	setViewport( 0, 0, INFRARED_VIEW_WIDTH, INFRARED_VIEW_HEIGHT );
 	setReferenceFrame( Camera::ABSOLUTE_RF );
 	setRenderOrder( Camera::PRE_RENDER );
-	setCullingMode(NO_CULLING);
 
 	Recorder::inst()->addRecordable(this);
 
@@ -149,9 +148,11 @@ InfraredCamera::InfraredCamera(void) : CameraBase(NULL, false)
 	_makeImageRealCallback = new MakeImageReal;
 	this->setPostDrawCallback(_makeImageRealCallback);
 
+	const int size = 512;
+
 	//_image = new Image;
 	_texture = new Texture2D;
-	_texture->setTextureSize(512, 512);
+	_texture->setTextureSize(size, size);
 	_texture->setInternalFormat(GL_LUMINANCE);
 	_texture->setFilter( Texture2D::MIN_FILTER, Texture2D::LINEAR );
 	_texture->setFilter( Texture2D::MAG_FILTER, Texture2D::LINEAR );
@@ -159,17 +160,16 @@ InfraredCamera::InfraredCamera(void) : CameraBase(NULL, false)
 
 	this->setComputeNearFarMode(DO_NOT_COMPUTE_NEAR_FAR);
 
-	const int size = 512;
-	_geom = osg::createTexturedQuadGeometry(Vec3d(0, 0, 0), Vec3d(size, 0, 0), Vec3d(0, size, 0));
+	_geom = osg::createTexturedQuadGeometry(Vec3d(-size>>1, -size>>1, 0), Vec3d(size, 0, 0), Vec3d(0, size, 0));
 	_geom->getOrCreateStateSet()->setMode(GL_BLEND, StateAttribute::ON);
-	//_geom->getOrCreateStateSet()->setTextureAttributeAndModes(0, _texture);
+	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(0, _texture);
 
 	Texture2D* texPerm = createPermTexture();
 	Texture1D* texSimplex = createSimplexTexture();
 	Texture2D* texGrad = createGradTexture();
-	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(0, texPerm);
-	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(1, texSimplex);
-	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(2, texGrad);
+	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(1, texPerm);
+	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(2, texSimplex);
+	_geom->getOrCreateStateSet()->setTextureAttributeAndModes(3, texGrad);
 
 	Geode* geode = new Geode;
 	geode->addDrawable(_geom);
@@ -180,10 +180,10 @@ InfraredCamera::InfraredCamera(void) : CameraBase(NULL, false)
 	_program->addShader(_vertObj);
 	_program->addShader(_fragObj);
 	_geom->getOrCreateStateSet()->setAttributeAndModes(_program, StateAttribute::ON);
-	//_geom->getOrCreateStateSet()->addUniform(new Uniform("texTarget", 0));
-	_geom->getOrCreateStateSet()->addUniform(new Uniform("permTexture", 0));
-	_geom->getOrCreateStateSet()->addUniform(new Uniform("simplexTexture", 1));
-	_geom->getOrCreateStateSet()->addUniform(new Uniform("gradTexture", 2));
+	_geom->getOrCreateStateSet()->addUniform(new Uniform("texTarget", 0));
+	_geom->getOrCreateStateSet()->addUniform(new Uniform("permTexture", 1));
+	_geom->getOrCreateStateSet()->addUniform(new Uniform("simplexTexture", 2));
+	_geom->getOrCreateStateSet()->addUniform(new Uniform("gradTexture", 3));
 	_geom->getOrCreateStateSet()->addUniform(new Uniform("time", 0.0f));
 
 	_vertObj->loadShaderSourceFromFile("./resources/camera.vert");
@@ -205,7 +205,6 @@ void InfraredCamera::getReady( const Situation& situation, unsigned int& begFram
 
 	//_image->allocateImage(resolution, resolution, 1, GL_RGBA, GL_FLOAT);
 	//_image->setInternalTextureFormat(GL_RGBA);
-	//Recorder::inst()->setInfraredTexture(_image);
 
 	// handle camera property
 

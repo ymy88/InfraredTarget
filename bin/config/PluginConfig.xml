@@ -4,7 +4,7 @@
 
     <defaultPluginPath>./plugins</defaultPath>
     <defaultDebugPostfix>d</defaultDebugPostfix>
-    <defaultPluginPostfix>dylib</defaultPostfix>
+    <defaultPluginPostfix>dll</defaultPostfix>
 
     <plugins>
         <!--

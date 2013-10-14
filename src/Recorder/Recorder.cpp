@@ -171,7 +171,7 @@ void Recorder::setInfraredView( OsgViewerBase* infraredView )
 {
 	_infraredCamera = new InfraredCamera;
 	infraredView->getLayerManager()->addToNewLayer(_infraredCamera, "InfraredCamera");
-	infraredView->getScreenManager()->addScreenItem(_infraredCamera->getLayer(), SCREEN_LEFT_BOTTOM, 0, 0);
+	infraredView->getScreenManager()->addScreenItem(_infraredCamera->getLayer(), SCREEN_CENTER_CENTER, 0, 0);
 }
 
 InfraredCamera* Recorder::getInfraredCamera()

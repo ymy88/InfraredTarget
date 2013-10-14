@@ -24,7 +24,7 @@ Node* Earth::createEarth()
 
 	Group* group = new Group;
 	group->addChild(earthNode);
-	//group->addChild(haloNode);
+	group->addChild(haloNode);
 	group->getOrCreateStateSet()->setMode(GL_BLEND, StateAttribute::ON);
 
 	return group;

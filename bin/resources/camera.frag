@@ -8,13 +8,21 @@ varying vec2 v_texCoord2D;
 varying vec3 v_texCoord3D;
 varying vec4 v_color;
 
-const float ONE = 1.0 / 512.0;
-const float ONEHALF = 0.5 / 512.0;
+const float ONE = 0.001953125;      // 1.0 / 512.0
+const float ONEHALF = 0.0009765625; // 0.5 / 512.0
 
 const float Gaussian_a = 1.0;
 const float Gaussian_c = 1.0;
 const float RANGE = 1.0;
 const float e = 2.71828183;  
+
+
+
+float uniformRandom(float seed)
+{
+    float n = fract(sin(dot(v_texCoord2D.xy, vec2(12.9898, 78.233))) * 43758.5453 * seed); // [0, 1]
+    return n;
+}
 
 ////////////////////////////////////////////////////////////////
 // Gaussian Blur
@@ -58,7 +66,7 @@ vec4 GaussianBlur()
 ///////////////////////////////////////////////////////////
 vec4 perlingNoise()
 {
-    vec4 P = vec4(4.0 * v_texCoord3D.xyz, 0.05 * time);
+    vec4 P = vec4(4.0 * v_texCoord3D.xyz / 2560.0, 0.01 * time);
 // The skewing and unskewing factors are hairy again for the 4D case
 // This is (sqrt(5.0)-1.0)/4.0
 #define F4 0.309016994375
@@ -164,21 +172,44 @@ vec4 perlingNoise()
     float n = 27.0 * (n0 + n1 + n2 + n3 + n4);
     //float n = 27.0 * n1;
 
-    vec4 res = vec4(0.5, 0.5, 0.5, 0.5) * vec4(0.5 + 0.5 * vec3(n, n, n), 1.0);
+    vec4 res = vec4(1.0, 1.0, 1.0, 1.0) * vec4(0.5 + 0.5 * vec3(n, n, n), 1.0); // [0, 1]
+
+    res = res * 0.45 + vec4(0.2, 0.2, 0.2, 0); // [0.2, 0.65]
     return res;
 }
 
 
+vec4 uniformNoise()
+{
+    float n = uniformRandom(0.001 * time);
+    n = (n + n - 1.0) * 0.3 + 1.0; // [0.7, 1.3]
+    return vec4(n, n, n, 1.0);
+}
+
+bool blindPoint()
+{
+    return uniformRandom(0.0025) * 100.0 < 0.02;
+}
+
 void main()
 {
-    // vec4 colorTarget = texture2D(targetTexture, v_texCoord2D);
-    vec4 colorNoise = perlingNoise();
-    gl_FragColor = colorNoise;
-    // if (colorTarget.r > colorNoise.r)
-    // {
-    //     gl_FragColor = colorTarget;
-    // }
-    // else
-    // {
-    // }
+    if (blindPoint() == true)
+    {
+        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);
+    }
+    else
+    {
+        vec4 colorTarget = GaussianBlur();
+        vec4 colorPerlingNoise = perlingNoise();
+        vec4 colorUniformNoise = uniformNoise();
+        vec4 colorNoise = colorPerlingNoise * colorUniformNoise;
+        if (colorTarget.r > colorNoise.r)
+        {
+            gl_FragColor = colorTarget;
+        }
+        else
+        {
+            gl_FragColor = colorNoise;
+        }
+    }
 }
